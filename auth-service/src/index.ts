@@ -1,12 +1,13 @@
-import { UserController } from "./application/controllers/userController";
+import { UserController } from "./application/controllers/UserController";
 import userRoutes from "./application/routes/userRoutes";
-import { UserInteractor } from "./domain/usecases/userInteractor";
-import { UserRepository } from "./infrastructure/db/pg/UserRepository";
+import { UserInteractor } from "./domain/usecases/UserInteractor";
+import { UserRepository } from "./infrastructure/db/prisma/UserRepository";
 import { createServer } from "./server";
+import { prisma } from "./infrastructure/db/prisma/client";
 
 const app = createServer()
 
-const repository = new UserRepository()
+const repository = new UserRepository(prisma)
 const interactor = new UserInteractor(repository)
 const controller = new UserController(interactor)
 

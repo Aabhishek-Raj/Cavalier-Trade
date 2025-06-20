@@ -1,4 +1,4 @@
-import { CreateUserDTO, UserResponseDTO } from "../dto/userDto";
+import { CreateUserDTO, UserResponseDTO } from "../dto/UserDTO";
 import { IUserInteractor } from "../interfaces/IUserInteractor";
 import { IUserRepository } from "../interfaces/IUserRepository";
 
@@ -12,7 +12,6 @@ export class UserInteractor implements IUserInteractor {
     async createUser(input: CreateUserDTO): Promise<UserResponseDTO> {
 
         const data = await this.repository.create(input)
-        
         return data
     }
 
