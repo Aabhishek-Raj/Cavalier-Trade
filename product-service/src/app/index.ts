@@ -1,11 +1,11 @@
-import { createUserUsecase } from "../usecases/createUser";
-import { findUserUsecase } from "../usecases/findUser";
-import { userControllerFactory } from "../presentation/controllers/userControllerFactory";
+import { createProductUsecase } from "../usecase/createProduct";
+import { findProductUsecase } from "../usecase/findProduct";
+import { productControllerFactory } from "../presentation/controllers/productControllerFactory";
 
-const controllers = userControllerFactory({
-  createUserUsecase,
-  findUserUsecase,
+const controllers = productControllerFactory({
+  createProductUsecase,
+  findProductUsecase,
 });
 
-export const createUserController = controllers.createUserController;
-export const findUserController = controllers.findUserController;
+export const createProductController = controllers.createProductController;
+export const findProductController = controllers.findProductController;

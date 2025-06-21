@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  postgres:
+  auth_service-db:
     image: postgres:latest
     restart: always
     environment:
@@ -10,8 +10,21 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - db:/var/lib/postgresql/data
+      - auth_db:/var/lib/postgresql/data
+  product-service-db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=product_service
+    ports:
+      - "5433:5432"
+    volumes:
+      - product_db:/var/lib/postgresql/data
 
 volumes:
-  db:
+  auth_db:
+    driver: local
+  product_db:
     driver: local
