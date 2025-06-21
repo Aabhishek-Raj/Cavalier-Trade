@@ -5,7 +5,6 @@ export default function userRoutes(controller: UserController) {
     const router = express.Router()
 
     router.post('/users', controller.onCreateUser.bind(controller))
-
     return router
 
 }       
